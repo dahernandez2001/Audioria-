@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1 class="display-4">Bienvenido al SGC</h1>
+    <p class="lead">Has iniciado sesión correctamente.</p>
+    <hr class="my-4">
+    <p>Usa la barra de navegación para acceder a Empresas, Auditoría y Documentos.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('company') }}">Ver Empresas</a>
+</div>
+{% endblock %}

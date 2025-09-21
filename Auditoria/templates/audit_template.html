@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h2>Checklist de Auditorías</h2>
+
+        <!-- Formulario para crear nuevo template -->
+        <form method="POST" class="mb-4">
+            <div class="mb-3">
+                <label for="title" class="form-label">Título del Checklist</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="questions" class="form-label">Preguntas (separadas por salto de línea)</label>
+                <textarea class="form-control" id="questions" name="questions" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Crear Checklist</button>
+        </form>
+
+        <!-- Lista de templates existentes -->
+        <h3>Templates existentes</h3>
+        {% if templates %}
+            <ul class="list-group">
+            {% for t in templates %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ t.title }}
+                    <a href="{{ url_for('audit_run', tid=t.id) }}" class="btn btn-sm btn-outline-success">Iniciar auditoría</a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay templates registrados.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
